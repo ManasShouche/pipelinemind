@@ -1,0 +1,1352 @@
+[
+  {
+    "run_id": "0680deb9-6f75-40c7-a160-39b31a9741aa",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-14T01:09:00",
+    "duration_secs": 186.83,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "efe7916c-8cce-4e9a-a899-03bc922dd8f2",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-14T01:06:00",
+    "duration_secs": 220.1,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "5536d7b5-7f30-4cf0-81e2-12f3a47d33a0",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-14T01:27:00",
+    "duration_secs": 161.49,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "93f68715-41f0-4383-b10d-196c38b46938",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-14T01:07:00",
+    "duration_secs": 65.13,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "64a37d22-01cb-45a6-a79d-05821afb7dbc",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-02-14T01:16:00",
+    "duration_secs": 33.01,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "6a7174f3-5f6a-4cb9-8c98-cd95db3e2151",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-15T01:13:00",
+    "duration_secs": 256.7,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "ce79524c-acdf-4c97-9316-bfc4dcf36ccc",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-15T01:06:00",
+    "duration_secs": 161.52,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "f9467676-8e46-414b-a36b-7dd23b71631b",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-15T01:12:00",
+    "duration_secs": 248.99,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "4ae3537e-3c3e-4a3c-b5e6-175143785324",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-15T01:03:00",
+    "duration_secs": 190.08,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "c9663a84-3255-4281-8d93-977334923ed0",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-15T01:01:00",
+    "duration_secs": 94.45,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "d1b17991-e61a-4bcf-b3cd-d3d095b34224",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-16T01:08:00",
+    "duration_secs": 260.59,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "0cf916c1-48e6-4d07-b8cf-f440d975196d",
+    "pipeline_id": "users",
+    "status": "failed",
+    "start_time": "2024-02-16T01:03:00",
+    "duration_secs": 33.89,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "d0231f30-2ee9-4b22-9289-cd125616a1e3",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-16T01:19:00",
+    "duration_secs": 50.29,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "b113d174-6d96-4607-97af-94ee31e9d694",
+    "pipeline_id": "sessions",
+    "status": "failed",
+    "start_time": "2024-02-16T01:10:00",
+    "duration_secs": 57.9,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "cb81e911-9ec7-4a86-8e2c-27b5fe181c04",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-16T01:29:00",
+    "duration_secs": 121.9,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "49d8c5de-9d0e-4647-9904-ed048478cd50",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-17T01:24:00",
+    "duration_secs": 114.4,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "d5d5f6f0-6a4e-4e44-b183-c088758a0a79",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-17T01:04:00",
+    "duration_secs": 122.12,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "c0ad36bf-37b6-471c-817b-ceacbee8bef0",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-17T01:27:00",
+    "duration_secs": 186.96,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "02feffc4-b706-4030-a58f-6cfa21d660c1",
+    "pipeline_id": "sessions",
+    "status": "failed",
+    "start_time": "2024-02-17T01:07:00",
+    "duration_secs": 42.25,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "2ee77506-67ae-419d-b2cf-0c1a1db2fd14",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-17T01:08:00",
+    "duration_secs": 149.24,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "b3cb3caa-33a5-45bf-b06f-9feeed4d1915",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-18T01:20:00",
+    "duration_secs": 224.57,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "de7f8ec9-1588-4cc6-8e98-4e79ed6b17bd",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-18T01:17:00",
+    "duration_secs": 132.18,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "dec95ece-d94b-404e-aeee-0d36172331af",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-18T01:19:00",
+    "duration_secs": 234.2,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "439c980d-d274-429c-8ed6-89f1275210d1",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-18T01:16:00",
+    "duration_secs": 135.85,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "e4151140-5997-4acf-aebe-198d117481a2",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-02-18T01:27:00",
+    "duration_secs": 38.84,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "2bbb9a9c-bd25-4bbb-98d3-d874905f3e3a",
+    "pipeline_id": "orders",
+    "status": "failed",
+    "start_time": "2024-02-19T01:12:00",
+    "duration_secs": 25.0,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "10064d62-b582-4ba3-87bf-569623c929ab",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-19T01:14:00",
+    "duration_secs": 73.89,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "df9680c5-2236-4582-aa2c-d4946ac18175",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-19T01:29:00",
+    "duration_secs": 94.87,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "bacfa01f-3188-49ff-a1e2-e5722c82f46d",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-19T01:27:00",
+    "duration_secs": 165.53,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "94b8f32a-d386-4504-a755-de262e20b2e5",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-19T01:08:00",
+    "duration_secs": 246.7,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "c4bc2187-45db-424e-850f-c5f568f6b342",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-20T01:03:00",
+    "duration_secs": 92.41,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "7effc6d1-0d27-40c4-8389-8d2a0969348b",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-20T01:06:00",
+    "duration_secs": 248.55,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "35b49d6a-d1b0-4eb5-a975-da03493a18ba",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-20T01:20:00",
+    "duration_secs": 189.97,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "179602ac-4e01-4823-a1a3-ff4b5148ad7b",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-20T01:07:00",
+    "duration_secs": 135.04,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "efd1224b-62af-48d8-817a-cf97692d99a4",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-20T01:02:00",
+    "duration_secs": 208.74,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "ba6446a8-6b3e-43d4-b812-40d791d0a159",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-21T01:21:00",
+    "duration_secs": 118.6,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "b47a0673-38c8-4cf2-97d8-16c9f9d4c705",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-21T01:26:00",
+    "duration_secs": 144.03,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "c44bccbb-0715-4a92-a658-699ae250e7aa",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-02-21T01:02:00",
+    "duration_secs": 17.24,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "f01ab9b6-bad6-42c3-bb90-69d9c0f0a8c1",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-21T01:05:00",
+    "duration_secs": 265.66,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "ce3b54a4-1b68-4c3b-84d2-8c3cbd189140",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-21T01:26:00",
+    "duration_secs": 55.01,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "b594b965-2291-4f0f-8eb0-923e2bfeba79",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-22T01:10:00",
+    "duration_secs": 61.85,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "279fcd92-fa45-4fab-a0b2-1abff01312b6",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-22T01:12:00",
+    "duration_secs": 62.49,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "5069730d-b361-40fb-bfbe-565ec48b73b6",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-22T01:14:00",
+    "duration_secs": 199.02,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "4545828e-10ff-4a1e-8a6b-91566b75fec1",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-22T01:04:00",
+    "duration_secs": 248.29,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "a3c47a5e-887a-4fca-b188-6d1eef61525b",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-22T01:17:00",
+    "duration_secs": 105.27,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "1b9ef603-d9b5-4ecc-9765-fe2db03408d8",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-23T01:08:00",
+    "duration_secs": 52.83,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "5c217949-f31c-4eff-aa02-287017739c1a",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-23T01:03:00",
+    "duration_secs": 178.64,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "e891cc78-ccb7-4946-88e9-b8a3cd7362d2",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-23T01:06:00",
+    "duration_secs": 123.26,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "75e907b3-670c-46a0-9323-8279c7009001",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-23T01:01:00",
+    "duration_secs": 187.89,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "edd6a731-2604-438b-ad8f-8fa787a61585",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-23T01:08:00",
+    "duration_secs": 112.67,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "8a97c6f3-5387-4581-9f78-89bd311d3c6d",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-24T01:27:00",
+    "duration_secs": 136.71,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "532ecdd6-50e0-4cc9-8f33-c5960b53ec08",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-24T01:01:00",
+    "duration_secs": 139.08,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "2a21e4a4-9d14-45d7-a040-fc265df1ab19",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-02-24T01:11:00",
+    "duration_secs": 57.62,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "71ca2c2b-79cd-4517-b4f6-6d9346126e4e",
+    "pipeline_id": "sessions",
+    "status": "failed",
+    "start_time": "2024-02-24T01:15:00",
+    "duration_secs": 34.63,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "8cbef27f-fe99-4d2b-82ad-c494d72c963b",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-24T01:22:00",
+    "duration_secs": 224.26,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "91628083-3010-44cf-a34f-749e68cf9e59",
+    "pipeline_id": "orders",
+    "status": "failed",
+    "start_time": "2024-02-25T01:19:00",
+    "duration_secs": 17.57,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "f781ed9c-c92f-4b50-8cf1-9b8ba0328144",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-25T01:09:00",
+    "duration_secs": 72.98,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "cc80b570-5bf5-4819-b287-3852d7d32a19",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-02-25T01:15:00",
+    "duration_secs": 15.72,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "4c29d722-f627-46f6-bd81-b50aa85c5d89",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-25T01:00:00",
+    "duration_secs": 85.66,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "80ea804e-6ba3-479d-abfc-94b5faa81a7c",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-02-25T01:03:00",
+    "duration_secs": 13.29,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "ed2e5423-5773-4dd6-acca-94869e6b9d06",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-26T01:06:00",
+    "duration_secs": 226.43,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "4d245f5e-7fb1-41c2-92ed-2d3389521ef1",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-26T01:21:00",
+    "duration_secs": 237.98,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "7e671b35-5a37-4751-a865-d463e2d232f4",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-02-26T01:14:00",
+    "duration_secs": 38.26,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "33da313c-421b-4733-90cc-cf0e03f087ab",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-26T01:14:00",
+    "duration_secs": 257.61,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "19ecb93e-5f03-4da5-8815-ee106c912b6b",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-26T01:12:00",
+    "duration_secs": 129.56,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "87370ded-7b9d-4b3a-936f-0ce6ddd56bfc",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-27T01:30:00",
+    "duration_secs": 50.16,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "8bf91306-0a20-4ffb-89b0-9684ca73533d",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-27T01:14:00",
+    "duration_secs": 117.66,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "655b469e-4a91-420a-a4e7-538419740a4d",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-27T01:24:00",
+    "duration_secs": 209.8,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "53672f92-eb2b-4e1d-8714-3b7c321f2a2e",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-27T01:00:00",
+    "duration_secs": 216.73,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "00933a81-94c7-4be0-883e-662d05a78a46",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-27T01:26:00",
+    "duration_secs": 250.21,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "1448a16d-fae4-4fd1-a9c9-1a883dc7fc7a",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-28T01:15:00",
+    "duration_secs": 175.68,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "4c31e4f7-4f49-4e44-a84b-7214a055e1d8",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-28T01:25:00",
+    "duration_secs": 69.9,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "40f6b7b0-6c03-409a-aac3-c907267a9014",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-28T01:23:00",
+    "duration_secs": 279.44,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "e4797f76-693a-4ac4-af5d-b7a0ddefc5f4",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-28T01:14:00",
+    "duration_secs": 99.76,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "32157d9a-5f8e-4c63-a5f6-900feda43a5d",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-02-28T01:05:00",
+    "duration_secs": 50.47,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "d9625cd9-6234-480e-b134-9b3f562e7007",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-02-29T01:07:00",
+    "duration_secs": 251.3,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "e72a6372-06d2-4179-84e6-be25729fd817",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-02-29T01:02:00",
+    "duration_secs": 245.19,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "4be00593-54a4-48c1-b3fe-300e65bc6058",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-02-29T01:07:00",
+    "duration_secs": 117.63,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "022a3ed8-b249-4e98-a6bf-d1a800feb2b3",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-02-29T01:07:00",
+    "duration_secs": 57.56,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "2446f5e3-d9de-42d7-8a83-37517145404b",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-02-29T01:30:00",
+    "duration_secs": 224.13,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "1fc60dec-5a6d-4a8c-9bda-70ee0b7735bc",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-01T01:27:00",
+    "duration_secs": 45.91,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "4c32032f-1143-4dbf-b45c-52839528232d",
+    "pipeline_id": "users",
+    "status": "failed",
+    "start_time": "2024-03-01T01:13:00",
+    "duration_secs": 56.46,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "22135fff-45ba-4f8b-9278-ace0c49f3fd4",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-01T01:18:00",
+    "duration_secs": 99.53,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "cfec82a4-b9ed-4fab-8826-43d7d0ea0c2e",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-01T01:13:00",
+    "duration_secs": 157.47,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "c342c85f-bd79-444f-a337-b80530437152",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-01T01:26:00",
+    "duration_secs": 93.68,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "7ff8d170-a749-45de-bdb8-754d618c9f06",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-02T01:22:00",
+    "duration_secs": 85.92,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "27ffdf35-68b8-4345-823b-7f3c33f1d3dd",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-02T01:00:00",
+    "duration_secs": 228.93,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "1e56c50f-3e62-4ea2-a68e-01aab75d5e14",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-02T01:27:00",
+    "duration_secs": 104.93,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "835c4a5e-dc49-451e-af26-024ceb0e7807",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-02T01:12:00",
+    "duration_secs": 261.11,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "b3e8466b-11eb-47cc-a5f7-827dc19fb792",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-02T01:30:00",
+    "duration_secs": 113.99,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "731e3489-dadf-4fb1-9218-028bfc159ecb",
+    "pipeline_id": "orders",
+    "status": "failed",
+    "start_time": "2024-03-03T01:16:00",
+    "duration_secs": 48.59,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "25eeb918-1b90-4568-aec4-2caa7f30a3a4",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-03T01:27:00",
+    "duration_secs": 123.24,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "8f664c4e-e93c-432a-af7b-49fdac80a767",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-03T01:22:00",
+    "duration_secs": 150.02,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "c500a033-1b25-4d51-84f8-bcd31cd5a9a2",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-03T01:13:00",
+    "duration_secs": 106.62,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "1251a4b3-34bd-45ae-9c9f-bbd6fe0c7928",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-03T01:03:00",
+    "duration_secs": 94.41,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "28126f53-859b-426d-b6f8-909b8ab588cb",
+    "pipeline_id": "orders",
+    "status": "failed",
+    "start_time": "2024-03-04T01:08:00",
+    "duration_secs": 42.84,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "229f3fd1-4695-47d4-93eb-ddf6410c8fde",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-04T01:03:00",
+    "duration_secs": 47.85,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "f9a1eb2f-f800-4e8c-b804-4371f6bc6bd5",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-04T01:08:00",
+    "duration_secs": 117.81,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "e48e454f-ed76-4861-9b38-426305aa0cea",
+    "pipeline_id": "sessions",
+    "status": "failed",
+    "start_time": "2024-03-04T01:06:00",
+    "duration_secs": 26.71,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "53263573-255f-4302-a440-0b957f5eb95b",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-04T01:18:00",
+    "duration_secs": 145.9,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "2506aa9c-c334-4644-8538-56ce66279078",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-05T01:02:00",
+    "duration_secs": 255.88,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "e32fc9d1-5dbb-4894-adcd-3d9b0a7c1227",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-05T01:30:00",
+    "duration_secs": 107.39,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "3b8dba7f-6b7f-4902-9f29-49fb531ad792",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-03-05T01:08:00",
+    "duration_secs": 8.68,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "1f4a374b-77ee-491e-960c-485d09293c56",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-05T01:11:00",
+    "duration_secs": 199.07,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "f65181ae-2a43-45bf-9d57-265bbb7f6dd6",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-03-05T01:22:00",
+    "duration_secs": 52.56,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "24d40e02-b428-451d-93a5-9d3d969ee391",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-06T01:10:00",
+    "duration_secs": 136.67,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "22d14dde-8d0d-4124-a46c-127edfe700fd",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-06T01:13:00",
+    "duration_secs": 55.3,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "231a1f28-e06e-445e-9ffa-699f4d0af04c",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-03-06T01:06:00",
+    "duration_secs": 36.65,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "4dbe0e69-867c-4758-8045-6d1aa79bd550",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-06T01:15:00",
+    "duration_secs": 97.47,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "d24a53c4-10ec-4c0d-92e5-0ff92d4e1468",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-06T01:06:00",
+    "duration_secs": 118.64,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "705f1a76-7599-43a5-80eb-a2818aae5360",
+    "pipeline_id": "orders",
+    "status": "failed",
+    "start_time": "2024-03-07T01:04:00",
+    "duration_secs": 31.35,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "6f3b1e26-4f1c-4b51-beeb-1bcd07871410",
+    "pipeline_id": "users",
+    "status": "failed",
+    "start_time": "2024-03-07T01:05:00",
+    "duration_secs": 58.52,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "ceb98ef9-d9e3-47a2-a979-ce2bd42106ac",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-07T01:21:00",
+    "duration_secs": 265.96,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "95348639-7660-4fce-b8f4-4ee93950fe3b",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-07T01:10:00",
+    "duration_secs": 134.31,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "6e0593ec-3744-476d-8015-d18588250fc9",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-07T01:11:00",
+    "duration_secs": 68.53,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "95f56d43-9bbf-401f-8d27-962ccf655153",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-08T01:21:00",
+    "duration_secs": 147.71,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "234823e0-f37e-419b-90bc-4a6d83f1a49c",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-08T01:23:00",
+    "duration_secs": 150.49,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "32e3dc77-5548-49ef-8c6d-8384861852e7",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-08T01:21:00",
+    "duration_secs": 237.47,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "93c0c84b-6dc5-4801-b2e8-44cb56d46e6b",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-08T01:01:00",
+    "duration_secs": 123.02,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "7097356d-824c-4731-b1fe-62c3b27ed97d",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-03-08T01:30:00",
+    "duration_secs": 41.87,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "0765d0ff-2c08-4823-a037-81820eb1725b",
+    "pipeline_id": "orders",
+    "status": "failed",
+    "start_time": "2024-03-09T01:14:00",
+    "duration_secs": 11.61,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "1b234e9b-b666-4c3d-af1d-f761953bd71f",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-09T01:28:00",
+    "duration_secs": 212.05,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "5583b2ec-7a6b-497c-9e50-3774a902d3d2",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-09T01:25:00",
+    "duration_secs": 242.6,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "60ae6676-ff45-40d2-b7e5-8b84f9e5c8df",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-09T01:22:00",
+    "duration_secs": 263.49,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "d9b56da8-ad71-410f-b9b9-d5e5622a8635",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-09T01:07:00",
+    "duration_secs": 237.53,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "31814555-39ed-469b-a650-bfb3f962f87f",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-10T01:26:00",
+    "duration_secs": 235.26,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "5322143c-0b61-4ca0-920c-812395d35fc9",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-10T01:27:00",
+    "duration_secs": 167.95,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "9e26601c-506f-4515-b640-1b422f24bfaa",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-10T01:15:00",
+    "duration_secs": 88.25,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "3c29bd4f-7ac9-4e1b-8e42-2c557348e5ba",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-10T01:14:00",
+    "duration_secs": 71.29,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "2cbda0dd-b58f-417c-80ab-a6f1095a5e5a",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-10T01:18:00",
+    "duration_secs": 135.65,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "37ce6b49-5c97-47ec-a927-33a402a38c71",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-11T01:23:00",
+    "duration_secs": 157.92,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "6ce7b892-ab76-4077-a039-47d71e59bc8a",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-11T01:13:00",
+    "duration_secs": 237.15,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "c04cdcad-1a2b-4180-9b57-b4f8854741c9",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-03-11T01:08:00",
+    "duration_secs": 19.87,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "7c308d7e-39e1-4e66-b6e4-27b24848aab4",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-11T01:21:00",
+    "duration_secs": 54.9,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "7f3ba5ed-a908-40d1-bec7-e12af00bd544",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-03-11T01:24:00",
+    "duration_secs": 48.87,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "da1ffbcf-8fa8-4f1e-aab3-9d47f0ac0d3c",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-12T01:21:00",
+    "duration_secs": 69.28,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "633f6aaa-55fa-43ff-8abb-9ae20fe137eb",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-12T01:19:00",
+    "duration_secs": 238.81,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "aa482f21-c5ec-4b19-9720-82cf347c3cbf",
+    "pipeline_id": "inventory",
+    "status": "failed",
+    "start_time": "2024-03-12T01:12:00",
+    "duration_secs": 43.1,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "1170e6ae-1102-4137-8291-50941fd5a210",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-12T01:08:00",
+    "duration_secs": 50.92,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "6487a701-87e3-427a-9e14-53bf67a83b45",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-12T01:07:00",
+    "duration_secs": 76.41,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "483c29c7-73d0-470a-881b-e5c43c973f6d",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-13T01:19:00",
+    "duration_secs": 277.7,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "96424a96-73e1-4c79-946b-52bef2c7ef24",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-13T01:17:00",
+    "duration_secs": 267.52,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "3f2166fc-42b4-4b62-aaca-10102ad94261",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-13T01:09:00",
+    "duration_secs": 127.04,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "fe735a09-c9c5-46c6-a8d7-30024326cb5b",
+    "pipeline_id": "sessions",
+    "status": "success",
+    "start_time": "2024-03-13T01:26:00",
+    "duration_secs": 96.75,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "d4ae83e9-5069-41c6-9635-2b58aa851638",
+    "pipeline_id": "metrics",
+    "status": "success",
+    "start_time": "2024-03-13T01:00:00",
+    "duration_secs": 223.73,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "5d84982d-85a2-4477-93e6-22114ea57510",
+    "pipeline_id": "orders",
+    "status": "success",
+    "start_time": "2024-03-14T01:06:00",
+    "duration_secs": 77.52,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "89e334b8-5ee7-4b58-a127-f980d08d5bdd",
+    "pipeline_id": "users",
+    "status": "success",
+    "start_time": "2024-03-14T01:24:00",
+    "duration_secs": 213.63,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "ce2b74b4-b8e4-44ba-81e2-5f3afba086f3",
+    "pipeline_id": "inventory",
+    "status": "success",
+    "start_time": "2024-03-14T01:23:00",
+    "duration_secs": 218.37,
+    "error_message": null,
+    "slo_met": true
+  },
+  {
+    "run_id": "41e9bf38-9787-4c22-a29d-2a5108fde2a5",
+    "pipeline_id": "sessions",
+    "status": "failed",
+    "start_time": "2024-03-14T01:21:00",
+    "duration_secs": 14.15,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  },
+  {
+    "run_id": "c82917eb-20c7-4c7d-aae5-4514ad9b6a12",
+    "pipeline_id": "metrics",
+    "status": "failed",
+    "start_time": "2024-03-14T01:00:00",
+    "duration_secs": 49.46,
+    "error_message": "Connection timeout to source DB",
+    "slo_met": false
+  }
+]

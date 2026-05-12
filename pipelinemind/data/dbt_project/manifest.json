@@ -1,0 +1,143 @@
+{
+  "metadata": {
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/manifest/v9.json",
+    "dbt_version": "1.7.0",
+    "generated_at": "2024-03-15T02:00:00.000000Z",
+    "invocation_id": "pm-manifest-v1",
+    "env": {}
+  },
+  "nodes": {
+    "model.pipelinemind.stg_orders": {
+      "unique_id": "model.pipelinemind.stg_orders",
+      "resource_type": "model",
+      "name": "stg_orders",
+      "description": "Staged orders from OLTP source. Applies type coercions and drops nulls on order_id/customer_id.",
+      "path": "staging/stg_orders.sql",
+      "schema": "staging",
+      "database": "warehouse",
+      "alias": "stg_orders",
+      "columns": {
+        "order_id":   {"name": "order_id",   "description": "Primary key — UUID",         "data_type": "varchar"},
+        "customer_id":{"name": "customer_id","description": "FK to dim_users.user_id",    "data_type": "varchar"},
+        "product_id": {"name": "product_id", "description": "FK to dim_products",         "data_type": "varchar"},
+        "total_amount":{"name":"total_amount","description":"Order total in USD",          "data_type": "numeric"},
+        "status_code":{"name": "status_code","description": "Numeric status (0=pending)", "data_type": "smallint"},
+        "order_date": {"name": "order_date", "description": "Calendar date of order",     "data_type": "date"}
+      },
+      "depends_on": {"nodes": []},
+      "config": {"materialized": "view"},
+      "tags": ["orders", "staging"],
+      "meta": {"owner": "data-engineering", "slo_tier": "gold"}
+    },
+    "model.pipelinemind.orders_fact": {
+      "unique_id": "model.pipelinemind.orders_fact",
+      "resource_type": "model",
+      "name": "orders_fact",
+      "description": "Orders fact table. Incremental MERGE from stg_orders. Consumed by vw_revenue_by_tier and vw_daily_funnel.",
+      "path": "marts/orders_fact.sql",
+      "schema": "marts",
+      "database": "warehouse",
+      "alias": "orders_fact",
+      "columns": {
+        "order_id":       {"name":"order_id",       "description":"PK",                        "data_type":"varchar"},
+        "customer_id":    {"name":"customer_id",    "description":"FK dim_users",              "data_type":"varchar"},
+        "total_amount":   {"name":"total_amount",   "description":"USD order total",           "data_type":"numeric"},
+        "is_high_value":  {"name":"is_high_value",  "description":"total_amount > 1000",       "data_type":"boolean"},
+        "order_date":     {"name":"order_date",     "description":"Date partition key",        "data_type":"date"},
+        "etl_loaded_at":  {"name":"etl_loaded_at",  "description":"ETL load timestamp",        "data_type":"timestamp"}
+      },
+      "depends_on": {"nodes": ["model.pipelinemind.stg_orders"]},
+      "config": {"materialized": "incremental", "unique_key": "order_id", "incremental_strategy": "merge"},
+      "tags": ["orders", "fact", "finance"],
+      "meta": {"owner": "data-engineering", "slo_tier": "gold", "downstream_bi": true}
+    },
+    "model.pipelinemind.dim_users": {
+      "unique_id": "model.pipelinemind.dim_users",
+      "resource_type": "model",
+      "name": "dim_users",
+      "description": "SCD Type-2 users dimension. Tracks historical changes to email, phone_number, subscription_tier, address_id.",
+      "path": "dims/dim_users.sql",
+      "schema": "dims",
+      "database": "warehouse",
+      "alias": "dim_users",
+      "columns": {
+        "user_sk":          {"name":"user_sk",          "description":"Surrogate key",     "data_type":"integer"},
+        "user_id":          {"name":"user_id",          "description":"Natural key",       "data_type":"varchar"},
+        "email":            {"name":"email",            "description":"PII_HIGH — user email", "data_type":"varchar", "meta":{"pii_class":"PII_HIGH"}},
+        "phone_number":     {"name":"phone_number",     "description":"PII_HIGH",          "data_type":"varchar",   "meta":{"pii_class":"PII_HIGH"}},
+        "date_of_birth":    {"name":"date_of_birth",    "description":"PII_HIGH",          "data_type":"date",      "meta":{"pii_class":"PII_HIGH"}},
+        "full_name":        {"name":"full_name",        "description":"PII_MEDIUM",        "data_type":"varchar",   "meta":{"pii_class":"PII_MEDIUM"}},
+        "subscription_tier":{"name":"subscription_tier","description":"User plan tier",   "data_type":"varchar"},
+        "is_current":       {"name":"is_current",      "description":"Active SCD2 flag",  "data_type":"boolean"},
+        "valid_from":       {"name":"valid_from",       "description":"SCD2 effective from","data_type":"date"},
+        "valid_to":         {"name":"valid_to",         "description":"SCD2 expiry date",  "data_type":"date"}
+      },
+      "depends_on": {"nodes": []},
+      "config": {"materialized": "incremental", "unique_key": "user_sk", "incremental_strategy": "merge"},
+      "tags": ["users", "dimension", "pii"],
+      "meta": {"owner": "data-engineering", "pii": true, "slo_tier": "gold"}
+    },
+    "model.pipelinemind.sessions_agg": {
+      "unique_id": "model.pipelinemind.sessions_agg",
+      "resource_type": "model",
+      "name": "sessions_agg",
+      "description": "Per-session aggregation of clickstream events. Session boundary: 30-min inactivity gap. Consumed by vw_daily_funnel and ML feature store.",
+      "path": "marts/sessions_agg.sql",
+      "schema": "marts",
+      "database": "warehouse",
+      "alias": "sessions_agg",
+      "columns": {
+        "session_id":      {"name":"session_id",       "description":"user_id + session_seq composite key","data_type":"varchar"},
+        "user_id":         {"name":"user_id",          "description":"FK dim_users natural key",            "data_type":"varchar"},
+        "session_start":   {"name":"session_start",    "description":"First event timestamp",              "data_type":"timestamp"},
+        "session_end":     {"name":"session_end",      "description":"Last event timestamp",               "data_type":"timestamp"},
+        "duration_seconds":{"name":"duration_seconds", "description":"session_end - session_start",         "data_type":"integer"},
+        "total_events":    {"name":"total_events",     "description":"Count of clickstream events",        "data_type":"integer"},
+        "unique_pages":    {"name":"unique_pages",     "description":"Count of distinct page_url values",  "data_type":"integer"},
+        "is_bounce":       {"name":"is_bounce",        "description":"true if total_events=1 and duration<10s","data_type":"boolean"}
+      },
+      "depends_on": {"nodes": []},
+      "config": {"materialized": "incremental", "unique_key": "session_id"},
+      "tags": ["sessions", "clickstream", "mart"],
+      "meta": {"owner": "analytics-engineering", "downstream_ml": true}
+    },
+    "model.pipelinemind.vw_revenue_by_tier": {
+      "unique_id": "model.pipelinemind.vw_revenue_by_tier",
+      "resource_type": "model",
+      "name": "vw_revenue_by_tier",
+      "description": "Revenue breakdown by subscription tier per month. Joins orders_fact to dim_users (is_current=true). Primary BI dashboard source.",
+      "path": "reporting/vw_revenue_by_tier.sql",
+      "schema": "reporting",
+      "database": "warehouse",
+      "alias": "vw_revenue_by_tier",
+      "columns": {
+        "subscription_tier":{"name":"subscription_tier","description":"User plan tier",       "data_type":"varchar"},
+        "month":            {"name":"month",            "description":"Truncated to month",   "data_type":"date"},
+        "gmv_usd":          {"name":"gmv_usd",          "description":"Gross merchandise value","data_type":"numeric"},
+        "order_count":      {"name":"order_count",      "description":"Total confirmed orders","data_type":"integer"},
+        "unique_customers": {"name":"unique_customers", "description":"Distinct customer count","data_type":"integer"}
+      },
+      "depends_on": {"nodes": ["model.pipelinemind.orders_fact","model.pipelinemind.dim_users"]},
+      "config": {"materialized": "view"},
+      "tags": ["finance", "bi", "reporting"],
+      "meta": {"owner": "analytics-engineering", "downstream_bi": true}
+    }
+  },
+  "sources": {},
+  "exposures": {
+    "exposure.pipelinemind.revenue_dashboard": {
+      "name": "revenue_dashboard",
+      "description": "Metabase Revenue by Tier dashboard consuming vw_revenue_by_tier",
+      "type": "dashboard",
+      "depends_on": {"nodes": ["model.pipelinemind.vw_revenue_by_tier"]},
+      "owner": {"name": "BI Team", "email": "bi@company.com"}
+    },
+    "exposure.pipelinemind.ml_feature_store": {
+      "name": "ml_feature_store",
+      "description": "ML feature store consuming sessions_agg for user propensity model",
+      "type": "ml",
+      "depends_on": {"nodes": ["model.pipelinemind.sessions_agg"]},
+      "owner": {"name": "ML Platform Team", "email": "mlplatform@company.com"}
+    }
+  }
+}

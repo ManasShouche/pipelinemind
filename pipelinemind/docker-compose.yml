@@ -1,0 +1,41 @@
+version: "3.9"
+
+x-common-env: &common-env
+  env_file: .env
+  restart: unless-stopped
+
+services:
+  api:
+    <<: *common-env
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: pipelinemind_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  ui:
+    <<: *common-env
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: pipelinemind_ui
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  pipelinemind_data:

@@ -1,0 +1,44 @@
+{
+  "snapshot_id": "snap_baseline_001",
+  "captured_at": "2024-03-15T02:00:00Z",
+  "tables": {
+    "orders_fact": {
+      "columns": [
+        {"name":"order_id",       "type":"varchar(36)",  "nullable":false},
+        {"name":"customer_id",    "type":"varchar(36)",  "nullable":false},
+        {"name":"product_id",     "type":"varchar(36)",  "nullable":true},
+        {"name":"total_amount",   "type":"numeric(12,2)","nullable":false},
+        {"name":"is_high_value",  "type":"boolean",      "nullable":true},
+        {"name":"order_date",     "type":"date",         "nullable":true},
+        {"name":"status_code",    "type":"smallint",     "nullable":true},
+        {"name":"etl_loaded_at",  "type":"timestamp",    "nullable":false}
+      ]
+    },
+    "dim_users": {
+      "columns": [
+        {"name":"user_sk",          "type":"integer",       "nullable":false},
+        {"name":"user_id",          "type":"varchar(36)",   "nullable":false},
+        {"name":"email",            "type":"varchar(320)",  "nullable":false},
+        {"name":"phone_number",     "type":"varchar(20)",   "nullable":true},
+        {"name":"date_of_birth",    "type":"date",          "nullable":true},
+        {"name":"full_name",        "type":"varchar(200)",  "nullable":true},
+        {"name":"subscription_tier","type":"varchar(20)",   "nullable":true},
+        {"name":"is_current",       "type":"boolean",       "nullable":false},
+        {"name":"valid_from",       "type":"date",          "nullable":false},
+        {"name":"valid_to",         "type":"date",          "nullable":false}
+      ]
+    },
+    "sessions_agg": {
+      "columns": [
+        {"name":"session_id",       "type":"varchar(100)", "nullable":false},
+        {"name":"user_id",          "type":"varchar(36)",  "nullable":false},
+        {"name":"session_start",    "type":"timestamp",    "nullable":false},
+        {"name":"session_end",      "type":"timestamp",    "nullable":true},
+        {"name":"duration_seconds", "type":"integer",      "nullable":true},
+        {"name":"total_events",     "type":"integer",      "nullable":false},
+        {"name":"unique_pages",     "type":"integer",      "nullable":true},
+        {"name":"is_bounce",        "type":"boolean",      "nullable":true}
+      ]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+dag_id: orders_incremental_etl
+description: "Incremental orders ETL — MERGE strategy upsert from OLTP to warehouse"
+schedule_interval: "0 * * * *"   # hourly
+start_date: "2024-01-01"
+catchup: false
+max_active_runs: 1
+default_args:
+  owner: data-engineering
+  retries: 3
+  retry_delay_minutes: 5
+  email_on_failure: true
+  email: ["de-alerts@company.com"]
+
+tasks:
+  - task_id: validate_source_connection
+    operator: PythonOperator
+    python_callable: "ingestion.validators.check_source_conn"
+    params:
+      pipeline_id: orders
+
+  - task_id: run_orders_pipeline
+    operator: PythonOperator
+    python_callable: "data.pipeline_repo.orders_pipeline.OrdersPipeline.run"
+    depends_on: [validate_source_connection]
+    params:
+      source_conn: "{{ var.value.orders_source_conn }}"
+      target_conn: "{{ var.value.warehouse_conn }}"
+      lookback_hours: 24
+
+  - task_id: run_dq_checks
+    operator: GreatExpectationsOperator
+    depends_on: [run_orders_pipeline]
+    params:
+      checkpoint_name: orders_fact_checkpoint
+      fail_task_on_validation_failure: true
+
+  - task_id: update_slo_metrics
+    operator: PythonOperator
+    python_callable: "monitoring.slo.record_run_outcome"
+    depends_on: [run_dq_checks]
+    trigger_rule: all_done
+
+slo:
+  success_rate_target_pct: 99.5
+  max_duration_minutes: 5
+  alert_channels: ["pagerduty", "slack-de-alerts"]

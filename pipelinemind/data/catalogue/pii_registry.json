@@ -1,0 +1,8 @@
+[
+  {"table_name":"dim_users","column_name":"email",         "pii_class":"PII_HIGH",   "sensitivity_level":"high",   "data_type":"varchar","retention_days":730},
+  {"table_name":"dim_users","column_name":"phone_number",  "pii_class":"PII_HIGH",   "sensitivity_level":"high",   "data_type":"varchar","retention_days":730},
+  {"table_name":"dim_users","column_name":"date_of_birth", "pii_class":"PII_HIGH",   "sensitivity_level":"high",   "data_type":"date",   "retention_days":730},
+  {"table_name":"dim_users","column_name":"full_name",     "pii_class":"PII_MEDIUM", "sensitivity_level":"medium", "data_type":"varchar","retention_days":1095},
+  {"table_name":"orders_fact","column_name":"customer_id", "pii_class":"PII_LOW",    "sensitivity_level":"low",    "data_type":"varchar","retention_days":2555},
+  {"table_name":"clickstream_events","column_name":"user_id","pii_class":"PII_LOW",  "sensitivity_level":"low",    "data_type":"varchar","retention_days":365}
+]

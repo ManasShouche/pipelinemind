@@ -1,0 +1,10 @@
+[
+  {"table_id":"t001","table_name":"orders_fact","schema":"marts","description":"Orders fact table — incremental MERGE from OLTP","domain":"finance","pii_flag":false,"tags":["orders","finance","gold"],"row_count":2847293},
+  {"table_id":"t002","table_name":"dim_users","schema":"dims","description":"SCD Type-2 users dimension with historical attribute tracking","domain":"users","pii_flag":true,"tags":["users","dimension","pii","gold"],"row_count":185432},
+  {"table_id":"t003","table_name":"sessions_agg","schema":"marts","description":"Per-session aggregation from clickstream — 30-min inactivity boundary","domain":"product","pii_flag":false,"tags":["sessions","clickstream","silver"],"row_count":9234811},
+  {"table_id":"t004","table_name":"inventory_snapshots","schema":"ops","description":"Daily inventory snapshot per SKU per warehouse","domain":"operations","pii_flag":false,"tags":["inventory","snapshot","silver"],"row_count":450000},
+  {"table_id":"t005","table_name":"stg_orders","schema":"staging","description":"Staged orders view — type coercions applied","domain":"finance","pii_flag":false,"tags":["staging","orders"],"row_count":0},
+  {"table_id":"t006","table_name":"vw_revenue_by_tier","schema":"reporting","description":"Revenue breakdown by subscription tier per month — primary BI view","domain":"finance","pii_flag":false,"tags":["reporting","bi","revenue"],"row_count":0},
+  {"table_id":"t007","table_name":"kpi_daily_metrics","schema":"reporting","description":"Daily KPI metrics: GMV, DAU, conversion rate, AOV","domain":"finance","pii_flag":false,"tags":["kpi","metrics","reporting"],"row_count":365},
+  {"table_id":"t008","table_name":"clickstream_events","schema":"raw","description":"Raw clickstream events from web/mobile clients","domain":"product","pii_flag":false,"tags":["raw","clickstream","bronze"],"row_count":84729312}
+]

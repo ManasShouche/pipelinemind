@@ -1,0 +1,11 @@
+[
+  {"source_table":"clickstream_events","source_column":"user_id",      "target_table":"sessions_agg",       "target_column":"user_id",       "transformation":"direct","pipeline_id":"sessions"},
+  {"source_table":"sessions_agg",      "source_column":"session_id",   "target_table":"vw_daily_funnel",    "target_column":"session_id",    "transformation":"aggregation","pipeline_id":"metrics"},
+  {"source_table":"orders_fact",       "source_column":"order_id",     "target_table":"vw_revenue_by_tier", "target_column":"order_id",      "transformation":"join","pipeline_id":"metrics"},
+  {"source_table":"orders_fact",       "source_column":"customer_id",  "target_table":"vw_revenue_by_tier", "target_column":"customer_id",   "transformation":"join","pipeline_id":"metrics"},
+  {"source_table":"dim_users",         "source_column":"user_id",      "target_table":"vw_revenue_by_tier", "target_column":"user_id",       "transformation":"join","pipeline_id":"metrics"},
+  {"source_table":"dim_users",         "source_column":"subscription_tier","target_table":"vw_revenue_by_tier","target_column":"subscription_tier","transformation":"direct","pipeline_id":"metrics"},
+  {"source_table":"stg_orders",        "source_column":"order_id",     "target_table":"orders_fact",        "target_column":"order_id",      "transformation":"merge","pipeline_id":"orders"},
+  {"source_table":"sessions_agg",      "source_column":"user_id",      "target_table":"kpi_daily_metrics",  "target_column":"dau",           "transformation":"count_distinct","pipeline_id":"metrics"},
+  {"source_table":"orders_fact",       "source_column":"total_amount", "target_table":"kpi_daily_metrics",  "target_column":"gmv_usd",       "transformation":"sum","pipeline_id":"metrics"}
+]

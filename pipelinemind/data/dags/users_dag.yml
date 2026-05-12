@@ -1,0 +1,38 @@
+dag_id: users_scd2_dimension
+description: "Users SCD Type-2 dimension refresh — attribute change tracking"
+schedule_interval: "0 2 * * *"   # daily at 02:00 UTC
+start_date: "2024-01-01"
+catchup: false
+max_active_runs: 1
+default_args:
+  owner: data-engineering
+  retries: 2
+  retry_delay_minutes: 10
+  email_on_failure: true
+
+tasks:
+  - task_id: extract_source_users
+    operator: PythonOperator
+    python_callable: "data.pipeline_repo.users_pipeline.UsersDimensionPipeline.extract_source"
+
+  - task_id: compute_scd2_deltas
+    operator: PythonOperator
+    python_callable: "data.pipeline_repo.users_pipeline.UsersDimensionPipeline.compute_deltas"
+    depends_on: [extract_source_users]
+
+  - task_id: apply_scd2_changes
+    operator: PythonOperator
+    python_callable: "data.pipeline_repo.users_pipeline.UsersDimensionPipeline.run"
+    depends_on: [compute_scd2_deltas]
+
+  - task_id: pii_audit_scan
+    operator: PythonOperator
+    python_callable: "monitoring.pii.audit_pii_columns"
+    depends_on: [apply_scd2_changes]
+    params:
+      table: dim_users
+      pii_columns: ["email", "phone_number", "date_of_birth", "full_name"]
+
+slo:
+  success_rate_target_pct: 99.0
+  max_duration_minutes: 30

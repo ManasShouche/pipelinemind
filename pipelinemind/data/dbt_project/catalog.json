@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/catalog/v1.json",
+    "dbt_version": "1.7.0",
+    "generated_at": "2024-03-15T02:05:00.000000Z"
+  },
+  "nodes": {
+    "model.pipelinemind.orders_fact": {
+      "unique_id": "model.pipelinemind.orders_fact",
+      "metadata": {"type": "table", "schema": "marts", "name": "orders_fact", "rows": 2847293, "bytes": 524288000},
+      "columns": {
+        "order_id":      {"type": "character varying(36)", "index": 1, "name": "order_id"},
+        "customer_id":   {"type": "character varying(36)", "index": 2, "name": "customer_id"},
+        "total_amount":  {"type": "numeric(12,2)",          "index": 3, "name": "total_amount"},
+        "is_high_value": {"type": "boolean",                "index": 4, "name": "is_high_value"},
+        "order_date":    {"type": "date",                   "index": 5, "name": "order_date"},
+        "status_code":   {"type": "smallint",               "index": 6, "name": "status_code"},
+        "etl_loaded_at": {"type": "timestamp",              "index": 7, "name": "etl_loaded_at"}
+      },
+      "stats": {"has_stats": true, "row_count": {"value": 2847293}, "bytes": {"value": 524288000}}
+    },
+    "model.pipelinemind.dim_users": {
+      "unique_id": "model.pipelinemind.dim_users",
+      "metadata": {"type": "table", "schema": "dims", "name": "dim_users", "rows": 185432, "bytes": 62914560},
+      "columns": {
+        "user_sk":          {"type": "integer",                  "index": 1},
+        "user_id":          {"type": "character varying(36)",    "index": 2},
+        "email":            {"type": "character varying(320)",   "index": 3},
+        "phone_number":     {"type": "character varying(20)",    "index": 4},
+        "date_of_birth":    {"type": "date",                     "index": 5},
+        "full_name":        {"type": "character varying(200)",   "index": 6},
+        "subscription_tier":{"type": "character varying(20)",    "index": 7},
+        "is_current":       {"type": "boolean",                  "index": 8},
+        "valid_from":       {"type": "date",                     "index": 9},
+        "valid_to":         {"type": "date",                     "index": 10}
+      }
+    }
+  }
+}

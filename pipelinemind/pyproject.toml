@@ -1,0 +1,63 @@
+[project]
+name = "pipelinemind"
+version = "0.1.0"
+description = "RAG-Powered Data Engineering Assistant via MCP"
+requires-python = ">=3.11"
+dependencies = [
+    "groq>=0.9.0",
+    "chromadb>=0.5.0",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=3.0.0",
+    "tree-sitter>=0.22.0",
+    "tree-sitter-python>=0.22.0",
+    "fastapi>=0.111.0",
+    "uvicorn[standard]>=0.30.0",
+    "streamlit>=1.35.0",
+    "duckdb>=1.0.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "structlog>=24.0.0",
+    "prometheus-client>=0.20.0",
+    "watchdog>=4.0.0",
+    "sqlalchemy>=2.0.0",
+    "pandas>=2.0.0",
+    "numpy>=1.26.0",
+    "scikit-learn>=1.4.0",
+    "tenacity>=8.0.0",
+    "httpx>=0.27.0",
+    "sse-starlette>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "great-expectations>=0.18.0",
+    "mcp>=1.0.0",
+    "streamlit-agraph>=0.0.45",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "config.py", "ingestion", "retrieval", "agent", "api", "ui", "db"
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+log_cli = true
+log_level = "WARNING"
+log_cli_level = "WARNING"
+pythonpath = ["."]
+filterwarnings = [
+    "ignore::DeprecationWarning:sentence_transformers",
+    "ignore::pydantic.warnings.PydanticDeprecatedSince20",
+    "ignore:.*min_items.*:pydantic.warnings.PydanticDeprecatedSince20",
+    "ignore::DeprecationWarning:great_expectations",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
