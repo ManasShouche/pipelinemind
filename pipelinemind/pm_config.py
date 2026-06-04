@@ -22,8 +22,8 @@ class Settings(BaseSettings):
 
     # Groq
     groq_api_key: str = Field(..., description="Groq Cloud API key")
-    groq_model_fast: str = "llama3-8b-8192"
-    groq_model_strong: str = "llama3-70b-8192"
+    groq_model_fast: str = "llama-3.1-8b-instant"
+    groq_model_strong: str = "llama-3.3-70b-versatile"
     groq_model_agent: str = "llama-3.3-70b-versatile"
 
     # Storage paths

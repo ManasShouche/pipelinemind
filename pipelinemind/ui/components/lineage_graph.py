@@ -3,6 +3,7 @@ Interactive lineage DAG component using streamlit-agraph.
 """
 from __future__ import annotations
 
+import os
 import httpx
 import streamlit as st
 
@@ -12,7 +13,7 @@ try:
 except ImportError:
     AGRAPH_AVAILABLE = False
 
-API_BASE = "http://localhost:8000"
+API_BASE = os.environ.get("API_BASE_URL", "http://localhost:8000")
 
 
 def render_lineage_graph(table_name: str, depth: int = 2) -> None:
@@ -37,15 +38,24 @@ def render_lineage_graph(table_name: str, depth: int = 2) -> None:
 
     nodes = []
     for n in nodes_data:
-        color = "#FF4B4B" if n["table"] in pii_nodes else (
-            "#FFD700" if n["table"] == table_name else "#4B8BFF"
-        )
+        is_center = n["table"] == table_name
+        is_pii    = n["table"] in pii_nodes
+        if is_pii:
+            bg, font_color = "#FF4B4B", "#FFFFFF"
+        elif is_center:
+            bg, font_color = "#FFD700", "#111111"
+        else:
+            bg, font_color = "#4B8BFF", "#FFFFFF"
+
         nodes.append(Node(
             id=n["table"],
             label=n["table"],
-            size=25,
-            color=color,
+            size=28 if is_center else 22,
+            color=bg,
+            font={"color": font_color, "size": 13, "face": "monospace"},
             title=f"Domain: {n.get('domain','?')} | Rows: {n.get('row_count',0):,}",
+            borderWidth=3 if is_center else 1,
+            borderWidthSelected=4,
         ))
 
     edges = [
@@ -53,15 +63,25 @@ def render_lineage_graph(table_name: str, depth: int = 2) -> None:
             source=e["source"],
             target=e["target"],
             label=e.get("transformation", ""),
+            font={"size": 10, "color": "#888888", "align": "middle"},
+            color={"color": "#aaaaaa", "highlight": "#555555"},
+            arrows="to",
         )
         for e in edges_data
     ]
 
     config = Config(
-        width=800, height=500,
+        width="100%",
+        height=520,
         directed=True,
         physics=True,
         hierarchical=False,
+        nodeHighlightBehavior=True,
+        highlightColor="#F7A7A6",
+        collapsible=False,
+        node={"labelHighlightBold": True},
+        link={"renderLabel": True},
+        d3={"gravity": -300, "linkLength": 180},
     )
     agraph(nodes=nodes, edges=edges, config=config)
 

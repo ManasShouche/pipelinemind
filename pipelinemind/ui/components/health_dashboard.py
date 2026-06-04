@@ -3,12 +3,13 @@ Pipeline health dashboard component with sparklines.
 """
 from __future__ import annotations
 
+import os
 import httpx
 import pandas as pd
 import streamlit as st
 
 
-API_BASE = "http://localhost:8000"
+API_BASE = os.environ.get("API_BASE_URL", "http://localhost:8000")
 
 
 def render_health_dashboard() -> None:

@@ -16,6 +16,10 @@ from dataclasses import dataclass, field
 from pm_config import settings
 from retrieval.chroma_retriever import RetrievedChunk
 
+# Chunks with sigmoid-normalised reranker score below this threshold
+# are dropped from context injection — they are irrelevant documents.
+MIN_USEFUL_SCORE = 0.10
+
 logger = logging.getLogger(__name__)
 
 APPROX_CHARS_PER_TOKEN = 4
@@ -67,6 +71,17 @@ class ContextBuilder:
         has_pii = False
         citations: list[dict] = []
 
+        # Filter out irrelevant documents (sigmoid score < MIN_USEFUL_SCORE)
+        # These are cross-encoder negatives — including them degrades answers.
+        useful_chunks = [c for c in chunks if c.score >= MIN_USEFUL_SCORE]
+        if not useful_chunks:
+            logger.info(
+                "All %d chunks below MIN_USEFUL_SCORE=%.2f — using top-1 only",
+                len(chunks), MIN_USEFUL_SCORE,
+            )
+            useful_chunks = chunks[:1]  # always keep at least one result
+        chunks = useful_chunks
+
         for chunk in chunks:
             # For code chunks, inject raw implementation; for others use summary
             if chunk.source_type in {"python", "sql"} and chunk.raw_implementation:
@@ -96,12 +111,13 @@ class ContextBuilder:
             selected.append(chunk)
             used_chars += len(block)
             citations.append({
-                "source_index": len(selected),
-                "file": chunk.source_file,
-                "chunk_type": chunk.chunk_type,
-                "function_name": chunk.function_name,
+                "source_index":    len(selected),
+                "file":            chunk.source_file,
+                "chunk_type":      chunk.chunk_type,
+                "function_name":   chunk.function_name,
                 "git_commit_hash": chunk.git_commit_hash,
-                "score": round(chunk.score, 4),
+                "score":           round(chunk.score, 4),
+                "retrieval_method": chunk.retrieval_method,
             })
 
         context_text = "\n".join(

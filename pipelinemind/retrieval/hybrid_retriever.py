@@ -16,6 +16,7 @@ from retrieval.reranker import Reranker
 from retrieval.hyde import HyDEProcessor
 from retrieval.context_builder import ContextBuilder, BuiltContext
 from retrieval.intent_classifier import IntentClassifier, Intent
+from retrieval.graph_augmentor import GraphAugmentor
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +42,8 @@ class HybridRetriever:
       4. Sparse retrieval (BM25)
       5. RRF fusion
       6. Cross-encoder re-ranking
-      7. Context building (token budget + PII redaction + raw code injection)
+      7. Graph augmentation (CATALOGUE / ACTION intents — 1-hop lineage neighbours)
+      8. Context building (token budget + PII redaction + raw code injection)
     """
 
     def __init__(self) -> None:
@@ -50,6 +52,7 @@ class HybridRetriever:
         self.dense             = ChromaRetriever()
         self.sparse            = BM25Retriever()
         self.reranker          = Reranker()
+        self.graph_augmentor   = GraphAugmentor()
         self.context_builder   = ContextBuilder()
 
     def retrieve(
@@ -91,6 +94,9 @@ class HybridRetriever:
 
         fused_chunks  = reciprocal_rank_fusion(dense_chunks, sparse_chunks)
         ranked_chunks = self.reranker.rerank(query, fused_chunks)
+
+        if intent in {Intent.CATALOGUE, Intent.ACTION}:
+            ranked_chunks = self.graph_augmentor.augment(ranked_chunks)
 
         context = self.context_builder.build(query, ranked_chunks)
 

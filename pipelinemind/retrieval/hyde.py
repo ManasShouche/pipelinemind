@@ -1,16 +1,19 @@
 """
 Hypothetical Document Embedding (HyDE) query processor.
-Generates a hypothetical answer to the query using Groq, then embeds
-the hypothetical answer rather than the raw query.  This bridges the
-vocabulary gap between natural language questions and technical documents.
+
+Model: llama3-8b-8192 via LLMRouter (was llama3-70b — overkill for doc generation).
+Rationale: HyDE needs vocabulary bridging and moderate creativity, not reasoning depth.
+8b generates good hypothetical documents at ~3x less quota cost than 70b.
+Falls back to the original query on any failure — retrieval still works, just at
+lower recall.
 """
 from __future__ import annotations
 
 import logging
 
-from groq import Groq
 from tenacity import retry, stop_after_attempt, wait_exponential
 
+from agent.llm_router import CallType, router
 from pm_config import settings
 
 logger = logging.getLogger(__name__)
@@ -28,32 +31,34 @@ _SYSTEM_PROMPT = (
 class HyDEProcessor:
     """
     Generates hypothetical documents for improved recall on complex queries.
-    Falls back to the original query on any Groq failure.
+    Falls back gracefully to the original query on failure.
     """
 
-    def __init__(self) -> None:
-        self._client = Groq(api_key=settings.groq_api_key)
-
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=1, max=10), reraise=False)
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(min=1, max=10),
+        reraise=False,
+    )
     def generate(self, query: str) -> str:
         """
         Returns a hypothetical document string to embed in place of the raw query.
-        Falls back gracefully to the original query on failure.
+        Falls back to the original query on failure.
         """
         if not settings.hyde_enabled:
             return query
         try:
-            response = self._client.chat.completions.create(
-                model=settings.groq_model_strong,
+            response = router.complete(
+                call_type=CallType.HYDE,
                 messages=[
                     {"role": "system", "content": _SYSTEM_PROMPT},
                     {"role": "user",   "content": f"Question: {query}"},
                 ],
-                max_tokens=250,
-                temperature=0.4,
             )
             hypo_doc = response.choices[0].message.content.strip()
-            logger.debug("HyDE generated %d chars for query: '%s...'", len(hypo_doc), query[:60])
+            logger.debug(
+                "HyDE generated %d chars (model=llama3-8b) for query: '%s...'",
+                len(hypo_doc), query[:60],
+            )
             return hypo_doc
         except Exception as exc:
             logger.warning("HyDE generation failed (%s) — using raw query", exc)

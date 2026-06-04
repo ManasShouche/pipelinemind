@@ -5,15 +5,18 @@ Displays pending tool call details and Accept/Deny buttons.
 from __future__ import annotations
 
 import json
+import os
 import httpx
 import streamlit as st
+
+_API_BASE = os.environ.get("API_BASE_URL", "http://localhost:8000")
 
 
 def render_approval_gate(
     tool_name: str,
     tool_args: dict,
     call_id: str,
-    api_base: str = "http://localhost:8000",
+    api_base: str = _API_BASE,
 ) -> None:
     st.warning("Agent Action Requires Approval", icon="⚠")
     st.markdown(f"**Tool:** `{tool_name}`")

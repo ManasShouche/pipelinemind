@@ -72,3 +72,11 @@ async def metrics():
 async def schema_drift():
     from agent.mcp_resources import get_schema_drift_events
     return get_schema_drift_events()
+
+
+# ── Agent router stats ────────────────────────────────────────────────────────
+@app.get("/api/v1/agent/stats", tags=["observability"])
+async def agent_stats():
+    """LLM router call statistics — shows model usage distribution."""
+    from agent.llm_router import router as llm_router
+    return llm_router.stats()
