@@ -3,18 +3,30 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+import os
 import httpx
 import streamlit as st
 from ui.components.lineage_graph       import render_lineage_graph
 from ui.components.schema_drift_banner import render_drift_banner
 
 render_drift_banner()
-API_BASE = "http://localhost:8000"
+API_BASE = os.environ.get("API_BASE_URL", "http://localhost:8000")
+
+
+@st.cache_data(ttl=120, show_spinner=False)
+def _fetch_tables():
+    return httpx.get(f"{API_BASE}/api/v1/catalogue/tables", timeout=10).json()
+
+
+@st.cache_data(ttl=120, show_spinner=False)
+def _fetch_table_detail(table_name: str):
+    return httpx.get(f"{API_BASE}/api/v1/catalogue/tables/{table_name}", timeout=10).json()
+
 
 st.header("Data Catalogue Browser")
 
 try:
-    tables = httpx.get(f"{API_BASE}/api/v1/catalogue/tables", timeout=10).json()
+    tables = _fetch_tables()
 except Exception as exc:
     st.error(f"API unavailable: {exc}")
     tables = []
@@ -27,7 +39,7 @@ if tables:
     selected = st.selectbox("Select a table", [t["table_name"] for t in tables])
     if selected:
         try:
-            detail = httpx.get(f"{API_BASE}/api/v1/catalogue/tables/{selected}", timeout=10).json()
+            detail = _fetch_table_detail(selected)
             tbl = detail.get("table", {})
             cols = detail.get("columns", [])
 
