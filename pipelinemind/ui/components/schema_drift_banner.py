@@ -4,15 +4,17 @@ Polls /api/v1/schema-drift every 5 minutes and displays alerts.
 """
 from __future__ import annotations
 
+import os
 import time
 import httpx
 import streamlit as st
 
 
 POLL_INTERVAL = 300  # seconds
+_API_BASE = os.environ.get("API_BASE_URL", "http://localhost:8000")
 
 
-def render_drift_banner(api_base: str = "http://localhost:8000") -> None:
+def render_drift_banner(api_base: str = _API_BASE) -> None:
     now = time.time()
     last_poll = st.session_state.get("drift_last_poll", 0)
 

@@ -4,6 +4,7 @@ Pipeline health dashboard component with sparklines.
 from __future__ import annotations
 
 import os
+from concurrent.futures import ThreadPoolExecutor
 import httpx
 import pandas as pd
 import streamlit as st
@@ -12,12 +13,25 @@ import streamlit as st
 API_BASE = os.environ.get("API_BASE_URL", "http://localhost:8000")
 
 
+@st.cache_data(ttl=60, show_spinner=False)
+def _fetch_pipelines() -> list[dict]:
+    resp = httpx.get(f"{API_BASE}/api/v1/pipelines", timeout=10)
+    return resp.json()
+
+
+def _fetch_detail(pipeline_id: str) -> tuple[dict, dict]:
+    """Fetch status and SLO in parallel for a single pipeline."""
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        f_status = pool.submit(httpx.get, f"{API_BASE}/api/v1/pipelines/{pipeline_id}/status", timeout=10)
+        f_slo    = pool.submit(httpx.get, f"{API_BASE}/api/v1/pipelines/{pipeline_id}/slo",    timeout=10)
+    return f_status.result().json(), f_slo.result().json()
+
+
 def render_health_dashboard() -> None:
     st.header("Pipeline Health Dashboard")
 
     try:
-        resp = httpx.get(f"{API_BASE}/api/v1/pipelines", timeout=10)
-        pipelines = resp.json()
+        pipelines = _fetch_pipelines()
     except Exception as exc:
         st.error(f"Could not reach API: {exc}")
         return
@@ -43,10 +57,8 @@ def render_health_dashboard() -> None:
     selected = st.selectbox("Drill into pipeline", [p["pipeline_id"] for p in pipelines])
     if selected:
         try:
-            status_resp = httpx.get(f"{API_BASE}/api/v1/pipelines/{selected}/status", timeout=10)
-            slo_resp    = httpx.get(f"{API_BASE}/api/v1/pipelines/{selected}/slo", timeout=10)
-            status = status_resp.json()
-            slo    = slo_resp.json()
+            with st.spinner("Loading…"):
+                status, slo = _fetch_detail(selected)
         except Exception as exc:
             st.error(f"Failed to fetch details: {exc}")
             return
