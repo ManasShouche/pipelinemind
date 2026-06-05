@@ -28,12 +28,14 @@ def render_health_dashboard() -> None:
 
     cols = st.columns(len(pipelines))
     for col, p in zip(cols, pipelines):
-        color = "green" if p["last_status"] == "success" else "red"
+        last = p["last_status"]
+        delta_color = "normal" if last == "success" else "inverse"
         with col:
             st.metric(
                 label=p["pipeline_id"],
-                value=f"{p['success_rate']}%",
-                delta=f"Last: {p['last_status']}",
+                value=f"{p['success_rate']:.1f}%",
+                delta=f"Last run: {last}",
+                delta_color=delta_color,
             )
 
     st.divider()
@@ -50,9 +52,11 @@ def render_health_dashboard() -> None:
             return
 
         c1, c2, c3 = st.columns(3)
+        actual    = slo.get("actual_pct")
+        compliant = slo.get("compliant")
         c1.metric("Last Status", status.get("status", "N/A"))
-        c2.metric("SLO %",       f"{slo.get('actual_pct', 0)}%")
-        c3.metric("Compliant",   "Yes" if slo.get("compliant") else "No")
+        c2.metric("SLO %",       f"{actual:.1f}%" if actual is not None else "N/A")
+        c3.metric("Compliant",   "Yes" if compliant else ("No" if compliant is False else "N/A"))
 
         if status.get("failures"):
             st.subheader("Recent Failures")

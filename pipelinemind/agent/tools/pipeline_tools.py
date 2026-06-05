@@ -5,7 +5,7 @@ Both query the DuckDB pipeline_runs and slo_definitions tables.
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Any
 
 import duckdb
@@ -15,7 +15,7 @@ from pm_config import settings
 logger = logging.getLogger(__name__)
 
 
-def get_pipeline_status(pipeline_id: str, lookback_hours: int = 24) -> dict[str, Any]:
+def get_pipeline_status(pipeline_id: str, lookback_hours: int = 168) -> dict[str, Any]:
     """
     Fetch current run status and history for a pipeline.
 
@@ -26,20 +26,18 @@ def get_pipeline_status(pipeline_id: str, lookback_hours: int = 24) -> dict[str,
         failures:     list of recent failure messages
         total_runs:   number of runs in the lookback window
     """
-    logger.info("get_pipeline_status | pipeline=%s lookback=%dh", pipeline_id, lookback_hours)
+    logger.info("get_pipeline_status | pipeline=%s", pipeline_id)
     con = duckdb.connect(str(settings.duckdb_path), read_only=True)
-    cutoff = (datetime.utcnow() - timedelta(hours=lookback_hours)).isoformat()
 
     rows = con.execute(
         """
         SELECT run_id, status, start_time, duration_secs, error_message, slo_met
         FROM pipeline_runs
         WHERE pipeline_id = ?
-          AND start_time  >= ?
         ORDER BY start_time DESC
         LIMIT 50
         """,
-        [pipeline_id, cutoff],
+        [pipeline_id],
     ).fetchall()
     con.close()
 
@@ -81,9 +79,8 @@ def get_slo_report(pipeline_id: str, window_days: int = 7) -> dict[str, Any]:
         breach_events: list of run_ids where slo_met = false
         compliant:     bool — actual_pct >= slo_target
     """
-    logger.info("get_slo_report | pipeline=%s window=%dd", pipeline_id, window_days)
+    logger.info("get_slo_report | pipeline=%s", pipeline_id)
     con = duckdb.connect(str(settings.duckdb_path), read_only=True)
-    cutoff = (datetime.utcnow() - timedelta(days=window_days)).isoformat()
 
     slo_row = con.execute(
         "SELECT target_value, comparison FROM slo_definitions WHERE pipeline_id = ?",
@@ -94,10 +91,11 @@ def get_slo_report(pipeline_id: str, window_days: int = 7) -> dict[str, Any]:
         """
         SELECT run_id, status, start_time, slo_met
         FROM pipeline_runs
-        WHERE pipeline_id = ? AND start_time >= ?
+        WHERE pipeline_id = ?
         ORDER BY start_time DESC
+        LIMIT 100
         """,
-        [pipeline_id, cutoff],
+        [pipeline_id],
     ).fetchall()
     con.close()
 

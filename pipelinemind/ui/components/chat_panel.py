@@ -94,19 +94,19 @@ def _stream_chat(message: str, history: list[dict]) -> dict:
 # ── Agent Trace rendering ────────────────────────────────────────────────────
 
 _PHASE_ICONS = {
-    "intent_classified":   "🎯",
-    "hyde_generated":      "🪄",
-    "retrieval_complete":  "📚",
-    "agent_start":         "🧠",
-    "direct_generation":   "💬",
-    "iteration_start":     "🔁",
-    "tool_start":          "🛠",
-    "tool_end":            "✅",
-    "approval_required":   "🔒",
-    "hallucination_guard": "⚠️",
-    "synthesis_forced":    "✂️",
-    "agent_done":          "🏁",
-    "error":               "❌",
+    "intent_classified":   "→",
+    "hyde_generated":      "~",
+    "retrieval_complete":  "↩",
+    "agent_start":         "▶",
+    "direct_generation":   "▶",
+    "iteration_start":     "·",
+    "tool_start":          "⤷",
+    "tool_end":            "✓",
+    "approval_required":   "⏸",
+    "hallucination_guard": "!",
+    "synthesis_forced":    "·",
+    "agent_done":          "■",
+    "error":               "✗",
 }
 
 
@@ -174,14 +174,14 @@ def _render_live_trace(slot, events: list[dict]) -> None:
         return
     lines = [_format_trace_line(e) for e in events]
     slot.markdown(
-        "**🧠 Agent thinking…**\n\n" + "\n\n".join(f"- {ln}" for ln in lines)
+        "**Agent reasoning…**\n\n" + "\n\n".join(f"- {ln}" for ln in lines)
     )
 
 
 def _render_trace(events: list[dict]) -> None:
     if not events:
         return
-    with st.expander(f"🧠 Agent trace ({len(events)} steps)"):
+    with st.expander(f"Agent trace ({len(events)} steps)"):
         for evt in events:
             st.markdown("- " + _format_trace_line(evt))
 
