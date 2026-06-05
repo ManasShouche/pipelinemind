@@ -55,6 +55,30 @@ class HybridRetriever:
         self.graph_augmentor   = GraphAugmentor()
         self.context_builder   = ContextBuilder()
 
+    def _backfill_metadata(self, chunks: list[RetrievedChunk]) -> list[RetrievedChunk]:
+        """Populate metadata for BM25 chunks (which carry only text) from ChromaDB."""
+        empty_ids = [c.chunk_id for c in chunks if not c.source_file]
+        if not empty_ids:
+            return chunks
+        try:
+            results  = self.dense.collection.get(ids=empty_ids, include=["metadatas"])
+            meta_map = {cid: m for cid, m in zip(results["ids"], results["metadatas"])}
+            for chunk in chunks:
+                if not chunk.source_file and chunk.chunk_id in meta_map:
+                    m = meta_map[chunk.chunk_id]
+                    chunk.source_file     = m.get("source_file", "")
+                    chunk.chunk_type      = m.get("chunk_type", "")
+                    chunk.pipeline_name   = m.get("pipeline_name", "")
+                    chunk.source_type     = m.get("source_type", "")
+                    chunk.function_name   = m.get("function_name", "")
+                    chunk.git_commit_hash = m.get("git_commit_hash", "")
+                    chunk.class_name      = m.get("class_name", "")
+                    chunk.pii_flag        = m.get("pii_flag", "false").lower() == "true"
+                    chunk.raw_implementation = m.get("raw_implementation", "")
+        except Exception as exc:
+            logger.warning("BM25 metadata backfill failed (non-fatal): %s", exc)
+        return chunks
+
     def retrieve(
         self,
         query: str,
@@ -93,6 +117,7 @@ class HybridRetriever:
         sparse_chunks = self.sparse.retrieve(query)
 
         fused_chunks  = reciprocal_rank_fusion(dense_chunks, sparse_chunks)
+        fused_chunks  = self._backfill_metadata(fused_chunks)
         ranked_chunks = self.reranker.rerank(query, fused_chunks)
 
         if intent in {Intent.CATALOGUE, Intent.ACTION}:
